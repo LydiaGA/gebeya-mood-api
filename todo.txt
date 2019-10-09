@@ -1,0 +1,4 @@
+// TODO: Move mongoose configuration out of app.js into config file.
+// TODO: Use reference to user Schema instead of just a string
+// TODO: Provide createdAt and updatedAt timestamps for every single model
+// TODO: Use ES6 features (let, const instead of var)
