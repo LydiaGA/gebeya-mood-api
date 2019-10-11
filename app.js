@@ -1,36 +1,30 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const validator = require('express-validator');
 
-var indexRouter = require('./routes/');
-var usersRouter = require('./routes/users');
+const config = require('./config');
+const router = require('./routes');
 
+mongoose.connect(config.MONGODB_URL, { userNewUrlParser: true, useCreateIndex: true });
 
-mongoose.connect("mongodb://localhost/gebeya_mood", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connection.on('connected', function mongoListener(err) {
+  console.log('Mongodb connected successfully');
 });
 
-mongoose.connection.on('error', function errHandler(){
-    console.log("Connection Error");  
-});
+mongoose.connection.on('error', function mongoErrorListener(err) {
+  console.log('Connecting to MongoDB failed!');
 
-mongoose.connection.once('open', function errHandler(){
-    console.log("Connected to Database");  
+  mongoose.connect(config.MONGODB_URL, { userNewUrlParser: true, useCreateIndex: true });
 });
 
 
 var app = express();
 
-app.use(logger('dev'));
-app.use(express.json());
+app.use(bodyParser.json());
+// app.use(validator());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+router(app);
 
 module.exports = app;
