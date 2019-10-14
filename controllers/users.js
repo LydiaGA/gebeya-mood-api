@@ -76,10 +76,6 @@ exports.loginUser = function loginUser(req, res, next) {
       if(result) {
         workflow.emit('respond', user);
       }
-
-      return res.status(401).json({
-        message: 'Auth Failed'
-      });
     });
   });
 
@@ -97,6 +93,7 @@ exports.loginUser = function loginUser(req, res, next) {
     res.status(200);
     res.json({
       message: 'Auth Successful',
+      user: user,
       token: token
     });
   });
