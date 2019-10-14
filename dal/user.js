@@ -18,7 +18,7 @@ exports.create = function create(userData, cb) {
         if (err) {
           return cb(err);
         }
-        exports.get({ _id: data._id }, function(err, user) {
+        exports.getOne({ _id: data._id }, function(err, user) {
           if (err) {
             return cb(err);
           }
@@ -29,7 +29,7 @@ exports.create = function create(userData, cb) {
   });
 };
 
-exports.get = function get(query, cb) {
+exports.getOne = function getOne(query, cb) {
 
   User.findOne(query).exec(function(err, user) {
     if (err) {
