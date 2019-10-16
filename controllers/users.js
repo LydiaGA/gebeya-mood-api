@@ -1,12 +1,25 @@
 const events = require('events');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { check, validationResult } = require('express-validator');
 
 const UserDal = require('../dal/user');
 const config = require('../config');
 
 exports.createUser = function createUser(req, res, next) {
   let workflow = new events.EventEmitter();
+
+  workflow.on('validateData', function validateData() {
+
+    let validationErrors = validationResult(req);
+
+    if(!validationErrors.isEmpty()) {
+      res.status(400);
+      res.json(validationErrors.array());
+    } else {
+      workflow.emit('createUser');
+    }
+  });
 
   workflow.on('createUser', function createUser() {
     UserDal.create(req.body, function callback(err, user) {
@@ -23,11 +36,23 @@ exports.createUser = function createUser(req, res, next) {
     res.json(user);
   });
 
-    workflow.emit('createUser');
+    workflow.emit('validateData');
 };
 
 exports.loginUser = function loginUser(req, res, next) {
   let workflow = new events.EventEmitter();
+
+  workflow.on('validateData', function validateData() {
+
+    let validationErrors = validationResult(req);
+
+    if(!validationErrors.isEmpty()) {
+      res.status(400);
+      res.json(validationErrors.array());
+    } else {
+      workflow.emit('checkUser');
+    }
+  });
 
   workflow.on('checkUser', function checkUser() {
     UserDal.getOne({ email: req.body.email }, function(err, user) {
@@ -74,5 +99,5 @@ exports.loginUser = function loginUser(req, res, next) {
     });
   });
 
-  workflow.emit('checkUser');
+  workflow.emit('validateData');
 };
