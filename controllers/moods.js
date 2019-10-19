@@ -7,7 +7,7 @@ const config = require('../config');
 const moodChoices = ["Happy", "Content", "Neutral", "Sad", "Angry"];
 
 exports.getChoices = function choices(req, res, next) {
-
+    console.log(mongoose.version);
     res.status(201);
     res.json(moodChoices);
 };

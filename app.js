@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const router = require('./routes');
 
-mongoose.connect(config.MONGODB_URL, { userNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(config.MONGODB_URL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', function mongoListener(err) {
   console.log('Mongodb connected successfully');
