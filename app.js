@@ -15,7 +15,7 @@ mongoose.connection.on('connected', function mongoListener(err) {
 mongoose.connection.on('error', function mongoErrorListener(err) {
   console.log('Connecting to MongoDB failed!');
 
-  mongoose.connect(config.MONGODB_URL, { userNewUrlParser: true, useCreateIndex: true });
+  mongoose.connect(config.MONGODB_URL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 });
 
 
