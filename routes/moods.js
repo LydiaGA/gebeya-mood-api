@@ -2,16 +2,17 @@ const express = require('express');
 const { check, validationResult } = require('express-validator');
 
 const Moods = require('../controllers/moods');
+const checkAuth = require('../lib/check_auth');
 
 const router = express.Router();
 
-router.get('/choices', Moods.getChoices);
+router.get('/choices', checkAuth, Moods.getChoices);
 
 router.post('/', [
     check('user').not().isEmpty().withMessage('User is required'), //check for proper id
     check('reason').not().isEmpty().withMessage('Reason is required'),
     check('value').not().isEmpty().withMessage('Value is required'),
     check('value').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input')
-], Moods.saveMood);
+], checkAuth, Moods.saveMood);
 
 module.exports = router;

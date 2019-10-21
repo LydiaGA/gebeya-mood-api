@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const validator = require('express-validator');
 
 const config = require('./config');
 const router = require('./routes');
@@ -23,7 +22,6 @@ mongoose.connection.on('error', function mongoErrorListener(err) {
 
 var app = express();
 
-// app.use(validator());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
