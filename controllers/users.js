@@ -6,6 +6,13 @@ const { check, validationResult } = require('express-validator');
 const UserDal = require('../dal/user');
 const config = require('../config');
 
+const userTypes = ["Student", "Staff", "Talent", "Guest", "Contractor"];
+
+exports.getUserTypes = function choices(req, res, next) {
+  res.status(201);
+  res.json(userTypes);
+};
+
 exports.createUser = function createUser(req, res, next) {
   let workflow = new events.EventEmitter();
 

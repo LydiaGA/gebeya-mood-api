@@ -5,10 +5,14 @@ const Users = require('../controllers/users');
 
 const router = express.Router();
 
+router.get('/types', Users.getUserTypes);
+
 router.post('/', [
     check('name').not().isEmpty().withMessage('Name is required'),
     check('email').not().isEmpty().withMessage('Email is required'),
-    check('password').not().isEmpty().withMessage('Password is required')
+    check('password').not().isEmpty().withMessage('Password is required'),
+    check('type').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input'),
+    check('sex').isIn(["Female", "Male"]).withMessage('Incorrect Input')
 ], Users.createUser);
 
 router.post('/login', [

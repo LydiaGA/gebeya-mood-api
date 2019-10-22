@@ -38,3 +38,13 @@ exports.getOne = function getOne(query, cb) {
     cb(null, user || {});
   });
 };
+
+exports.get = function get(query, cb) {
+
+  User.find(query).exec(function(err, user) {
+    if (err) {
+      return cb(err);
+    }
+    cb(null, user || {});
+  });
+};

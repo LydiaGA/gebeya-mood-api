@@ -8,6 +8,17 @@ const router = express.Router();
 
 router.get('/choices', checkAuth, Moods.getChoices);
 
+router.get('/search', [
+    check('filter').not().isEmpty().withMessage('Filter is required'), 
+    check('page').isInt().withMessage('Page should be a number'),
+    check('limit').isInt().withMessage('Limit should be a number'),
+    check('sort').not().isEmpty().withMessage('Sort is required')
+], checkAuth, Moods.getMoods);
+
+router.get('/count', [
+    check('filter').not().isEmpty().withMessage('Filter is required') //add validation for value being required
+], checkAuth, Moods.getMoodCount);
+
 router.post('/', [
     check('user').not().isEmpty().withMessage('User is required'), //check for proper id
     check('reason').not().isEmpty().withMessage('Reason is required'),
