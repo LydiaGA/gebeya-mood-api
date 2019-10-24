@@ -15,7 +15,7 @@ mongoose.connection.on('connected', function mongoListener(err) {
 mongoose.connection.on('error', function mongoErrorListener(err) {
   console.log('Connecting to MongoDB failed!');
 
-  mongoose.connect(process.env.MONGODB_URI || config.MONGODB_URL, 
+  mongoose.connect("mongodb://lydia:mood_pass2@ds339348.mlab.com:39348/db_gebeya_mood", 
     { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 });
 
