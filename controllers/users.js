@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 
 const UserDal = require('../dal/user');
 const config = require('../config');
+const searchOptions = require("../lib/search_options");
 
 const userTypes = ["Student", "Staff", "Talent", "Guest", "Contractor"];
 
@@ -70,7 +71,7 @@ exports.loginUser = function loginUser(req, res, next) {
       }
 
       workflow.emit('checkPassword', user);
-    })
+    });
   });
 
   workflow.on('checkPassword', function checkPassword(user) {
@@ -108,3 +109,20 @@ exports.loginUser = function loginUser(req, res, next) {
 
   workflow.emit('validateData');
 };
+
+exports.search = function(req, res, next){
+
+  req.query.filter = searchOptions.getFilter(req);
+
+  UserDal.get(req.query.filter, function(err, users) {
+    if (err) {
+      console.log(err);
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(200);
+    res.json(users);
+  });
+}

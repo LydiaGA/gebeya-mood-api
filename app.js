@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const router = require('./routes');
 
-mongoose.connect(process.env.MONGODB_URI || config.MONGODB_URL, 
+mongoose.connect("mongodb://lydia:<dbpassword>@ds339348.mlab.com:39348/db_gebeya_mood" || config.MONGODB_URL, 
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', function mongoListener(err) {
