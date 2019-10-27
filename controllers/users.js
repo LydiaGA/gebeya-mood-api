@@ -116,7 +116,6 @@ exports.search = function(req, res, next){
 
   UserDal.get(req.query.filter, function(err, users) {
     if (err) {
-      console.log(err);
       return res.status(404).json({
         message: 'User Not Found'
       });
@@ -124,5 +123,31 @@ exports.search = function(req, res, next){
 
     res.status(200);
     res.json(users);
+  });
+}
+
+exports.profile = function(req, res, next){
+  UserDal.getOne({_id : req.params.id}, function(err, user){
+    if (err) {
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(200);
+    res.json(user);
+  });
+}
+
+exports.updateProfile = function(req, res, next){
+  UserDal.update({_id : req.params.id}, req.body, function(err, user){
+    if (err) {
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(204);
+    res.json(user);
   });
 }

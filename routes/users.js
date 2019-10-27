@@ -9,6 +9,10 @@ router.get('/types', Users.getUserTypes);
 
 router.get('/search', Users.search);
 
+router.get('/profile/:id', Users.profile);
+
+router.put('/profile/:id', Users.updateProfile);
+
 router.post('/', [
     check('name').not().isEmpty().withMessage('Name is required'),
     check('email').not().isEmpty().withMessage('Email is required'),
