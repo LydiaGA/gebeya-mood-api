@@ -54,7 +54,6 @@ exports.saveMood = function saveMood(req, res, next) {
     workflow.emit('validateData');
 };
 
-
 exports.getMoods = function getMoods(req, res, next) {
     var workflow = new events.EventEmitter();
 

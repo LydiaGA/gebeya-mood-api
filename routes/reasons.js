@@ -9,8 +9,6 @@ const router = express.Router();
 
 router.get('/:type', checkAuth, Reasons.getReasons);
 
-router.get('/:id', checkAuth, Reasons.getReason);
-
 router.post('/', [
     check('title').not().isEmpty().withMessage('Title is required'),
     check('type').not().isEmpty().withMessage('Type is required'),
