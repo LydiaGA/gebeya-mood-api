@@ -41,10 +41,22 @@ exports.getOne = function getOne(query, cb) {
 
 exports.get = function get(query, cb) {
 
-  User.find(query).exec(function(err, user) {
+  User.find(query)
+  .populate('moods')
+  .exec(function(err, user) {
     if (err) {
       return cb(err);
     }
     cb(null, user || {});
   });
 };
+
+exports.update = function update(query, update, cb){
+
+  User.findOneAndUpdate(query, update, {useFindAndModify : false}).exec(function(err, user){
+    if (err) {
+      return cb(err);
+    }
+    cb(null, user || {});
+  });
+}

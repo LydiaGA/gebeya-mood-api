@@ -94,9 +94,6 @@ exports.getMoods = function getMoods(req, res, next) {
     workflow.emit('validateQuery');
 };
 
-
-
-
 exports.getMoodCount = function getMoodCount(req, res, next) {
     var workflow = new events.EventEmitter();
 
@@ -117,20 +114,21 @@ exports.getMoodCount = function getMoodCount(req, res, next) {
     workflow.on('getCount', function getMoods() {
         filter = req.query.filter;
 
-        MoodDal.moodCount(filter, function (err, c) {
+        MoodDal.moodCountAllTypes(filter, function (err, result) {
             if (err) {
                 return next(err);
             }
 
-            workflow.emit('respond', c);
+            workflow.emit('respond', result);
         });
     });
 
-    workflow.on('respond', function respond(c) {
+    workflow.on('respond', function respond(result) {
         res.status(200);
-        res.json(c);
+        res.json(result);
     });
 
     workflow.emit('validateQuery');
 };
+
 
