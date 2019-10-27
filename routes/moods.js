@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.get('/choices', checkAuth, Moods.getChoices);
 
+router.get('/:id', checkAuth, Moods.getMood);
+
 router.get('/search', [
     check('filter').not().isEmpty().withMessage('Filter is required'), 
     check('page').isInt().withMessage('Page should be a number'),

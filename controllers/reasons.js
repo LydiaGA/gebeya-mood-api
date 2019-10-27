@@ -58,3 +58,14 @@ exports.saveReason = function saveReason(req, res, next) {
     workflow.emit('validateData');
 };
 
+
+exports.getReason = function getReason(req, res, next){
+    ReasonDal.getOne({_id : req.params.id}, function(err, reason){
+        if (err) {
+            return next(err);
+        }
+
+        res.status(200);
+        res.json(reason);
+    });
+}

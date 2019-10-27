@@ -54,6 +54,17 @@ exports.saveMood = function saveMood(req, res, next) {
     workflow.emit('validateData');
 };
 
+exports.getMood = function getMood(req, res, next){
+    MoodDal.getOne({_id : req.params.id}, function(err, mood){
+        if (err) {
+            return next(err);
+        }
+
+        res.status(200);
+        res.json(mood);
+    });
+}
+
 exports.getMoods = function getMoods(req, res, next) {
     var workflow = new events.EventEmitter();
 
