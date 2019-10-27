@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.get('/types', Users.getUserTypes);
 
+router.get('/search', Users.search);
+
 router.post('/', [
     check('name').not().isEmpty().withMessage('Name is required'),
     check('email').not().isEmpty().withMessage('Email is required'),

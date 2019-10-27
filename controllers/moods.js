@@ -77,6 +77,8 @@ exports.getMoods = function getMoods(req, res, next) {
             page: req.query.page
         };
 
+        console.log(opts);
+
         MoodDal.search(opts, function (err, moods) {
             if (err) {
                 return next(err);
