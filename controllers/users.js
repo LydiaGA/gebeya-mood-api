@@ -5,8 +5,9 @@ const { check, validationResult } = require('express-validator');
 
 const UserDal = require('../dal/user');
 const config = require('../config');
+const searchOptions = require("../lib/search_options");
 
-const userTypes = ["Student", "Staff", "Talent", "Guest", "Contractor"];
+const userTypes = ["Student", "Staff", "Talent", "Contractor"];
 
 exports.getUserTypes = function choices(req, res, next) {
   res.status(201);
@@ -64,18 +65,20 @@ exports.loginUser = function loginUser(req, res, next) {
   workflow.on('checkUser', function checkUser() {
     UserDal.getOne({ email: req.body.email }, function(err, user) {
       if (err) {
+        console.log(err);
         return res.status(401).json({
           message: 'Auth Failed'
         });
       }
 
       workflow.emit('checkPassword', user);
-    })
+    });
   });
 
   workflow.on('checkPassword', function checkPassword(user) {
     bcrypt.compare(req.body.password, user.password, (err, result) => {
       if(err) {
+        console.log(err);
         return res.status(401).json({
           message: 'Auth Failed'
         });
@@ -108,3 +111,59 @@ exports.loginUser = function loginUser(req, res, next) {
 
   workflow.emit('validateData');
 };
+
+exports.search = function(req, res, next){
+
+  req.query.filter = searchOptions.getFilter(req);
+
+  UserDal.get(req.query.filter, function(err, users) {
+    if (err) {
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(200);
+    res.json(users);
+  });
+}
+
+exports.getUser = function(req, res, next){
+  UserDal.getOne({_id : req.params.id}, function(err, user){
+    if (err) {
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(200);
+    res.json(user);
+  });
+}
+
+exports.profile = function(req, res, next){
+  console.log(req.userData.userId);
+  UserDal.getOne({_id : req.userData.userId}, function(err, user){
+    if (err) {
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(200);
+    res.json(user);
+  });
+}
+
+exports.updateProfile = function(req, res, next){
+  UserDal.update({_id : req.userData.userId}, req.body, function(err, user){
+    if (err) {
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    res.status(204);
+    res.json(user);
+  });
+}

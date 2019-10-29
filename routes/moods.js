@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 
 const Moods = require('../controllers/moods');
 const checkAuth = require('../lib/check_auth');
+const grantAccess = require('../lib/grant_access');
 
 const router = express.Router();
 
