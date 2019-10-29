@@ -1,5 +1,35 @@
 const Mood = require("../models/mood");
 const User = require("../models/user");
+const Reason = require("../models/reason");
+
+exports.getChoices = function getChoices(cb){
+  Reason.find({type : "Happy"}, function(err, reasons){
+    let result = {};
+    result.Happy = reasons;
+
+    Reason.find({type : "Content"}, function(err, reasons){
+      result.Content = reasons;
+
+      Reason.find({type : "Neutral"}, function(err, reasons){
+        result.Neutral = reasons;
+
+        Reason.find({type: "Sad"}, function(err, reasons){
+          result.Sad = reasons;
+
+          Reason.find({type : "Angry"}, function(err, reasons){
+            result.Angry = reasons;
+
+            if(err){
+              return cb(err);
+            }
+
+            cb(null, result);
+          });
+        });
+      });
+    });
+  });
+}
 
 exports.create = function create(moodData, cb) {
   

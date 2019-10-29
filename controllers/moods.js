@@ -10,8 +10,15 @@ const moodChoices = ["Happy", "Content", "Neutral", "Sad", "Angry"];
 var defaultFields = ['user', 'reason', 'value', 'date_created', 'date_modified'];
 
 exports.getChoices = function choices(req, res, next) {
-    res.status(201);
-    res.json(moodChoices);
+
+    MoodDal.getChoices(function(err, result){
+        if (err) {
+            return next(err);
+        }
+
+        res.status(201);
+        res.json(result);
+    });   
 };
 
 exports.saveMood = function saveMood(req, res, next) {
@@ -76,6 +83,8 @@ exports.getMoods = function getMoods(req, res, next) {
             limit: req.query.limit,
             page: req.query.page
         };
+
+        console.log(opts);
 
         MoodDal.search(opts, function (err, moods) {
             if (err) {
