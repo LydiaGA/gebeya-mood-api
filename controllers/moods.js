@@ -37,6 +37,7 @@ exports.saveMood = function saveMood(req, res, next) {
       });
 
     workflow.on('saveMood', function saveMood() {
+        req.body.user = req.userData.userId;
         MoodDal.create(req.body, function callback(err, mood) {
             if (err) {
                 return next(err);
@@ -83,8 +84,6 @@ exports.getMoods = function getMoods(req, res, next) {
             limit: req.query.limit,
             page: req.query.page
         };
-
-        console.log(opts);
 
         MoodDal.search(opts, function (err, moods) {
             if (err) {
@@ -139,5 +138,21 @@ exports.getMoodCount = function getMoodCount(req, res, next) {
 
     workflow.emit('validateQuery');
 };
+
+exports.myLogs = function myLogs(req, res, next){
+    var filter = JSON.parse(req.query.filter);
+    filter.user = req.userData.userId;
+    req.query.filter = JSON.stringify(filter);
+    console.log(req.query.filter);
+    exports.getMoods(req, res, next);
+}
+
+exports.myMoodCount = function myMoodCount(req, res, next){
+    var filter = JSON.parse(req.query.filter);
+    filter.user = req.userData.userId;
+    req.query.filter = JSON.stringify(filter);
+    console.log(req.query.filter);
+    exports.getMoodCount(req, res, next);
+}
 
 
