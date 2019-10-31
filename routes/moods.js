@@ -29,7 +29,7 @@ router.get('/search', [
 
 router.get('/count', [
     check('filter').not().isEmpty().withMessage('Filter is required')
-], checkAuth, grantAccess('readAny', 'mood'), Moods.getMoodCount);
+], checkAuth, Moods.getMoodCount);
 
 router.post('/', [
     check('reason').not().isEmpty().withMessage('Reason is required'), // check for proper id

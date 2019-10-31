@@ -1,5 +1,5 @@
 module.exports = {
-    HTTP_PORT: process.env.HTTP_PORT || 8000,
+    HTTP_PORT: process.env.HTTP_PORT || 3000,
     MONGODB_URL: "mongodb://localhost/gebeya_mood",
     MAX_PAGE_SIZE: 100,
     DEFAULT_SORT: "date_modified",
