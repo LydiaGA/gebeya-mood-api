@@ -110,10 +110,19 @@ exports.getMoodCount = function getMoodCount(req, res, next) {
     workflow.on('validateQuery', function validateSearchQuery() {
 
         let validationErrors = validationResult(req);
+
+        console.log(req.query.filter.user != req.userData.userId);
+        console.log(req.query.filter.user != null);
+        console.log(req.userData.role == "basic");
     
         if(!validationErrors.isEmpty()) {
           res.status(400);
           res.json(validationErrors.array());
+        }else if((req.query.filter.user != null && req.query.filter.user != req.userData.userId) && req.userData.role == "basic"){
+            res.status(401);
+            res.json({
+                error: "You don't have enough permission to perform this action"
+               });
         } else {
           workflow.emit('getCount');
         }
@@ -140,19 +149,54 @@ exports.getMoodCount = function getMoodCount(req, res, next) {
 };
 
 exports.myLogs = function myLogs(req, res, next){
-    var filter = JSON.parse(req.query.filter);
-    filter.user = req.userData.userId;
-    req.query.filter = JSON.stringify(filter);
-    console.log(req.query.filter);
-    exports.getMoods(req, res, next);
+    var workflow = new events.EventEmitter();
+
+    workflow.on('validateQuery', function validateSearchQuery() {
+
+        let validationErrors = validationResult(req);
+    
+        if(!validationErrors.isEmpty()) {
+          res.status(400);
+          res.json(validationErrors.array());
+        } else {
+          workflow.emit('getLogs');
+        }
+    });
+
+    workflow.on('getLogs', function getLogs(){
+        var filter = JSON.parse(req.query.filter);
+        filter.user = req.userData.userId;
+        req.query.filter = JSON.stringify(filter);
+        exports.getMoods(req, res, next);
+    });
+
+    workflow.emit('validateQuery');
+    
 }
 
 exports.myMoodCount = function myMoodCount(req, res, next){
-    var filter = JSON.parse(req.query.filter);
-    filter.user = req.userData.userId;
-    req.query.filter = JSON.stringify(filter);
-    console.log(req.query.filter);
-    exports.getMoodCount(req, res, next);
+    var workflow = new events.EventEmitter();
+
+    workflow.on('validateQuery', function validateSearchQuery() {
+
+        let validationErrors = validationResult(req);
+    
+        if(!validationErrors.isEmpty()) {
+          res.status(400);
+          res.json(validationErrors.array());
+        } else {
+          workflow.emit('getCount');
+        }
+    });
+
+    workflow.on('getCount', function getLogs(){
+        var filter = JSON.parse(req.query.filter);
+        filter.user = req.userData.userId;
+        req.query.filter = JSON.stringify(filter);
+        exports.getMoods(req, res, next);
+    });
+
+    workflow.emit('validateQuery');
 }
 
 

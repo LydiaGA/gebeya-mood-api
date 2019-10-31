@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 require('dotenv').config();
+const config = require('./config');
 const router = require('./routes');
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://lydia:mood_pass2@ds339348.mlab.com:39348/db_gebeya_mood", 
