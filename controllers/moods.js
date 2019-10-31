@@ -193,7 +193,7 @@ exports.myMoodCount = function myMoodCount(req, res, next){
         var filter = JSON.parse(req.query.filter);
         filter.user = req.userData.userId;
         req.query.filter = JSON.stringify(filter);
-        exports.getMoods(req, res, next);
+        exports.getMoodCount(req, res, next);
     });
 
     workflow.emit('validateQuery');
