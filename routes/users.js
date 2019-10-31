@@ -13,7 +13,7 @@ router.post('/', [
     check('password').not().isEmpty().withMessage('Password is required'),
     check('type').isIn(["Student", "Staff", "Talent", "Contractor"]).withMessage('Incorrect Input'),
     check('sex').isIn(["Female", "Male"]).withMessage('Incorrect Input'),
-    //check('role').isEmpty().withMessage('Role is read-only'),
+    check('role').isEmpty().withMessage('Role is read-only'),
 ], Users.createUser);
 
 router.post('/login', [
