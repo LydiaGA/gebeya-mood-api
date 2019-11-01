@@ -90,6 +90,10 @@ exports.getMoods = function getMoods(req, res, next) {
                 return next(err);
             }
 
+            moods.map(mood => {
+                mood.user = "sdfgsdfg";
+            });
+
             workflow.emit('respond', moods);
         });
     });

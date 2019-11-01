@@ -7,6 +7,16 @@ const checkAuth = require('../lib/check_auth');
 
 const router = express.Router();
 
+router.get('/types', Users.getUserTypes);
+
+router.get('/profile', checkAuth, Users.profile);
+
+router.put('/profile', checkAuth, Users.updateProfile);
+
+router.get('/search', checkAuth, grantAccess('readAny', 'user'), Users.search);
+
+router.get('/:id', checkAuth, grantAccess('readAny', 'user'), Users.getUser);
+
 router.post('/', [
     check('name').not().isEmpty().withMessage('Name is required'),
     check('email').not().isEmpty().withMessage('Email is required'),
