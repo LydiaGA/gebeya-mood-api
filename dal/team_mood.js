@@ -1,10 +1,10 @@
-const Mood = require("../models/mood");
+const TeamMood = require("../models/team_mood");
 const User = require("../models/user");
 const Reason = require("../models/reason");
 
 exports.create = function create(moodData, cb) {
   
-  var moodModel = new Mood(moodData);
+  var moodModel = new TeamMood(moodData);
 
   moodModel.save(function saveMood(err, data) {
       if (err) {
@@ -21,8 +21,7 @@ exports.create = function create(moodData, cb) {
 
 exports.getOne = function getOne(query, cb) {
 
-  Mood.findOne(query)
-  .populate(['reason', 'user'])
+TeamMood.findOne(query)
   .exec(function(err, mood) {
     if (err) {
       return cb(err);
@@ -33,7 +32,7 @@ exports.getOne = function getOne(query, cb) {
 
 exports.get = function search(options, cb){
 
-  Mood.find(options.filter, options.fields)
+TeamMood.find(options.filter, options.fields)
   .sort(options.sort)
   .limit(options.limit)
   .skip(options.limit * (options.page - 1))
@@ -48,7 +47,7 @@ exports.get = function search(options, cb){
 
 exports.update = function update(query, update, cb){
 
-    Mood.findOneAndUpdate(query, update, {useFindAndModify : false}).exec(function(err, mood){
+    TeamMood.findOneAndUpdate(query, update, {useFindAndModify : false}).exec(function(err, mood){
       if (err) {
         return cb(err);
       }
