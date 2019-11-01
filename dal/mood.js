@@ -75,9 +75,9 @@ exports.get = function search(options, cb){
   });
 }
 
-exports.getByUserType = function getByUserType(userType, options, cb){ 
+exports.getByTeam = function getByUserTeam(team, options, cb){ 
 
-  User.find({type : userType}, "_id", function(err, users){
+  User.find({team : team}, "_id", function(err, users){
     if(err){
       return cb(err);
     }
@@ -95,11 +95,11 @@ exports.getByUserType = function getByUserType(userType, options, cb){
 }
 
 exports.search = function search(options, cb){
-  if(options.filter.user_type != null){ 
-    var userType = options.filter.user_type;
-    options.filter.user_type = null;
+  if(options.filter.team != null){ 
+    var team = options.filter.team;
+    options.filter.team = null;
 
-    exports.getByUserType(userType, options, function(err, moods){
+    exports.getByTeam(team, options, function(err, moods){
       if(err){
         return cb(err);
       }
@@ -127,8 +127,8 @@ exports.count = function count(filter, cb){
   });
 }
 
-exports.countByUserType = function countByUserType(userType, filter, cb){
-  User.find({type : userType}, "_id", function(err, users){
+exports.countByTeam = function countByTeam(team, filter, cb){
+  User.find({team : team}, "_id", function(err, users){
     if(err){
       return cb(err);
     }
@@ -145,11 +145,11 @@ exports.countByUserType = function countByUserType(userType, filter, cb){
 }
 
 exports.moodCount = function moodCount(filter, cb){
-  if(filter.user_type != null){ 
-    var userType = filter.user_type;
-    filter.user_type = null;
+  if(filter.team != null){ 
+    var team = filter.team;
+    filter.team = null;
 
-    exports.countByUserType(userType, filter, function(err, c){
+    exports.countByTeam(team, filter, function(err, c){
       if(err){
         return cb(err);
       }

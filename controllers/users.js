@@ -7,11 +7,11 @@ const UserDal = require('../dal/user');
 const config = require('../config');
 const searchOptions = require("../lib/search_options");
 
-const userTypes = ["Student", "Staff", "Talent", "Contractor"];
+const teams = ["Student", "Staff", "Talent", "Contractor"];
 
-exports.getUserTypes = function choices(req, res, next) {
+exports.getTeams = function choices(req, res, next) {
   res.status(201);
-  res.json(userTypes);
+  res.json(teams);
 };
 
 exports.createUser = function createUser(req, res, next) {
