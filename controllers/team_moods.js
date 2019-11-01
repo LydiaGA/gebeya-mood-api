@@ -1,25 +1,11 @@
 const events = require('events');
 const { check, validationResult } = require('express-validator');
 
-const MoodDal = require('../dal/mood');
+const TeamMoodDal = require('../dal/team_mood');
 const config = require('../config');
 const searchOptions = require("../lib/search_options");
 
-const moodChoices = ["Happy", "Content", "Neutral", "Sad", "Angry"];
-
 var defaultFields = ['user', 'reason', 'value', 'date_created', 'date_modified'];
-
-exports.getChoices = function choices(req, res, next) {
-
-    MoodDal.getChoices(function(err, result){
-        if (err) {
-            return next(err);
-        }
-
-        res.status(201);
-        res.json(result);
-    });   
-};
 
 exports.saveMood = function saveMood(req, res, next) {
     let workflow = new events.EventEmitter();
@@ -38,7 +24,7 @@ exports.saveMood = function saveMood(req, res, next) {
 
     workflow.on('saveMood', function saveMood() {
         req.body.user = req.userData.userId;
-        MoodDal.create(req.body, function callback(err, mood) {
+        TeamMoodDal.create(req.body, function callback(err, mood) {
             if (err) {
                 return next(err);
             }
@@ -55,7 +41,7 @@ exports.saveMood = function saveMood(req, res, next) {
     workflow.emit('validateData');
 };
 
-exports.getMoods = function getMoods(req, res, next) {
+exports.getTeamMoods = function getTeamMoods(req, res, next) {
     var workflow = new events.EventEmitter();
 
     req.query.filter = searchOptions.getFilter(req);
@@ -85,14 +71,10 @@ exports.getMoods = function getMoods(req, res, next) {
             page: req.query.page
         };
 
-        MoodDal.search(opts, function (err, moods) {
+        TeamMoodDal.search(opts, function (err, moods) {
             if (err) {
                 return next(err);
             }
-
-            moods.map(mood => {
-                mood.user = "sdfgsdfg";
-            });
 
             workflow.emit('respond', moods);
         });
@@ -106,12 +88,10 @@ exports.getMoods = function getMoods(req, res, next) {
     workflow.emit('validateQuery');
 };
 
-exports.getMoodCount = function getMoodCount(req, res, next) {
-    var workflow = new events.EventEmitter();
+exports.updateTeamMood = function updateTeamMood(req, res, next) {
+    let workflow = new events.EventEmitter();
 
-    req.query.filter = searchOptions.getFilter(req);
-
-    workflow.on('validateQuery', function validateSearchQuery() {
+    workflow.on('validateData', function validateData() {
 
         let validationErrors = validationResult(req);
     
@@ -119,44 +99,25 @@ exports.getMoodCount = function getMoodCount(req, res, next) {
           res.status(400);
           res.json(validationErrors.array());
         } else {
-          workflow.emit('getCount');
+          workflow.emit('updateMood');
         }
-    });
+      });
 
-    workflow.on('getCount', function getMoods() {
-        filter = req.query.filter;
-
-        MoodDal.moodCountAllTypes(filter, function (err, result) {
+    workflow.on('updateMood', function updateMood() {
+        req.body.user = req.userData.userId;
+        TeamMoodDal.create(req.body, function callback(err, mood) {
             if (err) {
                 return next(err);
             }
 
-            workflow.emit('respond', result);
+            workflow.emit('respond', mood);
         });
     });
 
-    workflow.on('respond', function respond(result) {
-        res.status(200);
-        res.json(result);
+    workflow.on('respond', function respond(mood) {
+        res.status(201);
+        res.json(mood);
     });
 
-    workflow.emit('validateQuery');
+    workflow.emit('validateData');
 };
-
-exports.myLogs = function myLogs(req, res, next){
-    var filter = JSON.parse(req.query.filter);
-    filter.user = req.userData.userId;
-    req.query.filter = JSON.stringify(filter);
-    console.log(req.query.filter);
-    exports.getMoods(req, res, next);
-}
-
-exports.myMoodCount = function myMoodCount(req, res, next){
-    var filter = JSON.parse(req.query.filter);
-    filter.user = req.userData.userId;
-    req.query.filter = JSON.stringify(filter);
-    console.log(req.query.filter);
-    exports.getMoodCount(req, res, next);
-}
-
-

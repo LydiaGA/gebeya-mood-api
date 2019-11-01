@@ -118,6 +118,7 @@ exports.search = function(req, res, next){
 
   UserDal.get(req.query.filter, function(err, users) {
     if (err) {
+      console.log(err);
       return res.status(404).json({
         message: 'User Not Found'
       });
