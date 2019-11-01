@@ -71,7 +71,6 @@ exports.get = function search(options, cb){
       if(err) {
           return cb(err);
       }
-      console.log(moods);
       return cb(null, moods);
   });
 }

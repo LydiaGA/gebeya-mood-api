@@ -12,12 +12,14 @@ router.get('/search', [
     check('page').isInt().withMessage('Page should be a number'),
     check('limit').isInt().withMessage('Limit should be a number'),
     check('sort').not().isEmpty().withMessage('Sort is required')
-], checkAuth, grantAccess('readAny', 'mood'), TeamMoods.getMoods);
+], checkAuth, TeamMoods.getTeamMoods);
 
 router.post('/', [
     check('name').not().isEmpty().withMessage('Reason is required'), // check for proper id
     check('total').not().isEmpty().withMessage('Value is required'),
     check('mood').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input')
 ], checkAuth, TeamMoods.saveMood);
+
+router.put('/:id', checkAuth, TeamMoods.updateTeamMood);
 
 module.exports = router;
