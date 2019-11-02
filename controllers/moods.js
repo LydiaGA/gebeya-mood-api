@@ -95,8 +95,21 @@ exports.getMoods = function getMoods(req, res, next) {
     });
 
     workflow.on('respond', function respond(moods) {
+        var result = moods.map((mood) => {
+            var newMood = {
+                user_id : mood.user.id,
+                user_name: mood.user.name,
+                mood: mood.value,
+                team: mood.user.team,
+                reason: mood.reason.title,
+                date_created: mood.date_created,
+                date_modified: mood.date_modified, 
+            };
+            return newMood; 
+        });
+        console.log(result);
         res.status(200);
-        res.json(moods);
+        res.json(result);
     });
 
     workflow.emit('validateQuery');
