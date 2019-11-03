@@ -101,7 +101,7 @@ exports.loginUser = function loginUser(req, res, next) {
       },
       config.JWT_KEY,
       {
-        expiresIn: "1h"
+        expiresIn: "24h"
       }
     );
     res.status(200);

@@ -13,7 +13,11 @@ router.get('/profile', checkAuth, Users.profile);
 
 router.put('/profile', checkAuth, Users.updateProfile);
 
-router.get('/search', checkAuth, grantAccess('readAny', 'user'), Users.search);
+router.get('/search', [
+    check('filter').not().isEmpty().withMessage('Filter is required'), 
+    check('page').isInt().withMessage('Page should be a number'),
+    check('limit').isInt().withMessage('Limit should be a number'),
+], checkAuth, grantAccess('readAny', 'user'), Users.search);
 
 router.get('/:id', checkAuth, grantAccess('readAny', 'user'), Users.getUser);
 
