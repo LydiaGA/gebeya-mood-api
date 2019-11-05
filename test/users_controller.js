@@ -26,11 +26,8 @@ describe("User Endpoint", function() {
             return done(err);
           }
 
-          user = res.body;
-
-          //expect(res.body._id).to.not.equal("string");
-
-          done();
+          expect(res.body._id).to.not.equal("string");
+          return done();
         });
     });
   });

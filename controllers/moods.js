@@ -38,7 +38,7 @@ exports.saveMood = function saveMood(req, res, next) {
 
     workflow.on('saveMood', function saveMood() {
         req.body.user = req.userData.userId;
-        MoodDal.create(req.body, function callback(err, mood) {
+        MoodDal.create(req.body, function (err, mood) {
             if (err) {
                 return next(err);
             }

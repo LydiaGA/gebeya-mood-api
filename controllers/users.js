@@ -97,7 +97,8 @@ exports.loginUser = function loginUser(req, res, next) {
     const token = jwt.sign(
       {
         email: user.email,
-        userId: user._id
+        userId: user._id,
+        role: user.role
       },
       config.JWT_KEY,
       {
