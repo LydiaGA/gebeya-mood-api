@@ -1,0 +1,46 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: api-development
+spec:
+  selector:
+    matchLabels:
+      app: api-service-dev
+      role: api-dev
+  replicas: 1
+  template:
+    metadata:
+      name: api-deployment
+      labels:
+        app: api-service-dev
+        role: api-dev
+        env: production
+    spec:
+      containers:
+      - name: sample
+        image: gcr.io/cloud-solutions-images/gceme:1.0.0
+        env:
+          - name: MONGODB_URL
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: MONGODB_URL
+          - name: NODE_ENV
+            value: production
+          - name: HOST_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "100m"
+        imagePullPolicy: Always
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+        args: ['--env="HOST_IP=$(HOST_IP)"','--env="API_URL=$(API_URL)"','--env="MONGODB_URL=$(MONGODB_URL)"']
+        ports:
+        - name: health
+          containerPort: 3000
