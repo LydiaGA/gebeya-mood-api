@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: api-service
       role: api
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       name: api-deployment
@@ -38,7 +38,7 @@ spec:
         imagePullPolicy: Always
         readinessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 3000
         args: ['--env="HOST_IP=$(HOST_IP)"','--env="API_URL=$(API_URL)"','--env="MONGODB_URL=$(MONGODB_URL)"']
         ports:
