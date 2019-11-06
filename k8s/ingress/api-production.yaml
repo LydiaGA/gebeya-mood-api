@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: gebeya-mood-api-pro
+    ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  rules:
+    - host: "gebeya-mood.et5el.gebeya.co"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: api-service
+              servicePort: 3000
+          - path: /*
+            backend:
+              serviceName: api-service
+              servicePort: 3000
+#          - path: /api
+#            backend:
+#              serviceName: sample-service
+#              servicePort: 3000
+#          - path: /api/*
+#            backend:
+#              serviceName: sample-service
+#              servicePort: 3000

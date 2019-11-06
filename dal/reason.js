@@ -1,6 +1,6 @@
 const Reason = require("../models/reason");
 
-exports.get = function get(query, cb) { //change to search
+exports.get = function get(query, cb) { 
 
     Reason
     .find(query)

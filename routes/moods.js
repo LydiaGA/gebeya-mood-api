@@ -13,7 +13,6 @@ router.get('/my-logs', [
     check('filter').not().isEmpty().withMessage('Filter is required'), 
     check('page').isInt().withMessage('Page should be a number'),
     check('limit').isInt().withMessage('Limit should be a number'),
-    check('sort').not().isEmpty().withMessage('Sort is required')
 ], checkAuth, Moods.myLogs);
 
 router.get('/my-mood-count', [
@@ -24,15 +23,14 @@ router.get('/search', [
     check('filter').not().isEmpty().withMessage('Filter is required'), 
     check('page').isInt().withMessage('Page should be a number'),
     check('limit').isInt().withMessage('Limit should be a number'),
-    check('sort').not().isEmpty().withMessage('Sort is required')
 ], checkAuth, grantAccess('readAny', 'mood'), Moods.getMoods);
 
 router.get('/count', [
     check('filter').not().isEmpty().withMessage('Filter is required')
-], checkAuth, grantAccess('readAny', 'mood'), Moods.getMoodCount);
+], checkAuth, Moods.getMoodCount);
 
 router.post('/', [
-    check('reason').not().isEmpty().withMessage('Reason is required'), // check for proper id
+    check('reason').not().isEmpty().withMessage('Reason is required'), 
     check('value').not().isEmpty().withMessage('Value is required'),
     check('value').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input')
 ], checkAuth, Moods.saveMood);

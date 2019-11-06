@@ -2,19 +2,21 @@ const events = require('events');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
+const logger = require('heroku-logger')
 
 const UserDal = require('../dal/user');
 const config = require('../config');
 const searchOptions = require("../lib/search_options");
 
-const userTypes = ["Student", "Staff", "Talent", "Contractor"];
+const teams = ["Student", "Staff", "Talent", "Contractor"];
 
-exports.getUserTypes = function choices(req, res, next) {
-  res.status(201);
-  res.json(userTypes);
+exports.getTeams = function choices(req, res, next) {
+  res.status(200);
+  res.json(teams);
 };
 
 exports.createUser = function createUser(req, res, next) {
+  logger.info("Signup Data ", {body: req.body} )
   let workflow = new events.EventEmitter();
 
   workflow.on('validateData', function validateData() {
@@ -48,6 +50,7 @@ exports.createUser = function createUser(req, res, next) {
 };
 
 exports.loginUser = function loginUser(req, res, next) {
+  logger.info("Login Data ", {body: req.body} )
   let workflow = new events.EventEmitter();
 
   workflow.on('validateData', function validateData() {
@@ -94,11 +97,12 @@ exports.loginUser = function loginUser(req, res, next) {
     const token = jwt.sign(
       {
         email: user.email,
-        userId: user._id
+        userId: user._id,
+        role: user.role
       },
       config.JWT_KEY,
       {
-        expiresIn: "1h"
+        expiresIn: "24h"
       }
     );
     res.status(200);
