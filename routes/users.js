@@ -7,6 +7,23 @@ const checkAuth = require('../lib/check_auth');
 
 const router = express.Router();
 
+/**
+ * @api {get} /users/teams  Get List of Teams
+ * @apiName Get List of Teams
+ *
+ *
+ * @apiSuccess {String[]} _id  teams List of Teams
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * 	 HTTP/1.1 200 OK
+ * 	 {
+ * 		"Student",
+ *      "Staff",
+ *      "Talent",
+ *      "Contractor"
+ * 	 }
+ *
+ */
 router.get('/teams', Users.getTeams);
 
 router.get('/profile', checkAuth, Users.profile);
@@ -21,6 +38,40 @@ router.get('/search', [
 
 router.get('/:id', checkAuth, grantAccess('readAny', 'user'), Users.getUser);
 
+/**
+ * @api {post} /users  Create User
+ * @apiName CreateUser
+ *
+ * @apiParam {String} name
+ * @apiParam {String} email
+ * @apiParam {String} password 
+ *
+ * @apiParamExample {json} Request-Example:
+ * 	 {
+ *    "name" : "User 1"
+ * 		"phone_number": "00001",
+ * 		"password": "1234",
+ * 	 }
+ *
+ * @apiSuccess {String} _id  
+ * @apiSuccess {String} name 
+ * @apiSuccess {String} phone_number 
+ * @apiSuccess {String} password
+ * @apiSuccess {Date} date_created 
+ * @apiSuccess {Date} date_modified 
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * 	 HTTP/1.1 201 Created
+ * 	 {
+ * 		 "_id": '5dbff75a17a0f60e402361b4',
+ *    "name": "User 1"
+ * 		"phone_number": "00001",
+ *  	"password": "$2b$10$g9585.6JHFzK/oymuH90pujQ5jdDspGPQUpwlBX4/uIk8j4eLZ42q",
+ * 		"date_created": 2019-11-04T10:03:06.108Z,
+ * 		"date_modified": 2019-11-04T10:03:06.108Z,
+ * 	 }
+ *
+ */
 router.post('/', [
     check('name').not().isEmpty().withMessage('Name is required'),
     check('email').not().isEmpty().withMessage('Email is required'),
