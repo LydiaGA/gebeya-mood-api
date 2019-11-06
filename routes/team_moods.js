@@ -15,7 +15,7 @@ router.get('/search', [
 ], checkAuth, TeamMoods.getTeamMoods);
 
 router.post('/', [
-    check('name').not().isEmpty().withMessage('Reason is required'), // check for proper id
+    check('name').not().isEmpty().withMessage('Reason is required'), 
     check('total').not().isEmpty().withMessage('Value is required'),
     check('mood').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input')
 ], checkAuth, TeamMoods.saveMood);

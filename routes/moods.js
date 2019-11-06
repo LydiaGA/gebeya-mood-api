@@ -30,7 +30,7 @@ router.get('/count', [
 ], checkAuth, Moods.getMoodCount);
 
 router.post('/', [
-    check('reason').not().isEmpty().withMessage('Reason is required'), // check for proper id
+    check('reason').not().isEmpty().withMessage('Reason is required'), 
     check('value').not().isEmpty().withMessage('Value is required'),
     check('value').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input')
 ], checkAuth, Moods.saveMood);
