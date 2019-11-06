@@ -6,15 +6,15 @@ var app = require("../app");
 describe("User Endpoint", function() {
   let user;
   var sampleSignup = {
-    name: "Test User 2",
-    email: "user2@test.com",
+    name: "Test User 5",
+    email: "user5@test.com",
     password: "1234",
     team: "Student",
     sex : "Female"
   };
 
   var sampleLogin = {
-    email : "user2@test.com",
+    email : "user5@test.com",
     password : "1234"
   }
 
@@ -30,7 +30,8 @@ describe("User Endpoint", function() {
           if (err) {
             return done(err);
           }
-          expect(res.body.user._id).to.not.equal("string");
+          console.log(res.body);
+          expect(res.body.role).to.equal("basic");
           
           return done();
         });

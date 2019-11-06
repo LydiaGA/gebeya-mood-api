@@ -13,8 +13,12 @@ module.exports = function iniRouter(app) {
 	app.use('/moods', moodsRouter);
 	app.use('/reasons', reasonsRouter);
 	app.use('/team-moods', teamMoodsRouter);
-	app.use('/', function(req, res, next){
-		res.status(200);
+	app.use('/health', function(req, res, next){
+		if(mongoose.connection.readyState == 1 || mongoose.connection.readyState == 2){
+			res.status(200);
+		}else{
+			res.status(500);
+		}		
 		res.json({
 			App_Status : "UP",
 			MongoDB_Connection_Status : mongoStatusCodes[mongoose.connection.readyState],
