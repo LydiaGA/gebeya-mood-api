@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const router = require('./routes');
 
-mongoose.connect(process.env.MONGODB_URL,
+mongoose.connect(process.env.MONGODB_URI,
 { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', function mongoListener(err) {
