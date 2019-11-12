@@ -1,0 +1,8 @@
+{
+    "name" : "Gebeya Mood Api",
+    "version" : "1.0.0",
+    "description" : "Gebeya Mood Api",
+    "template" : {
+        "forceLanguage" : "en"
+    } 
+}
