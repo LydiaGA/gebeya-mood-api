@@ -10,4 +10,4 @@ spec:
       targetPort: 3000
   selector:
     app: api-service-dev
-    role: sample
+    role: api-dev
