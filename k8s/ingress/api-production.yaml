@@ -10,19 +10,7 @@ spec:
     - host: "gebeya-mood.et5el.gebeya.co"
       http:
         paths:
-          - path: /
-            backend:
-              serviceName: api-service
-              servicePort: 3000
           - path: /*
             backend:
               serviceName: api-service
               servicePort: 3000
-#          - path: /api
-#            backend:
-#              serviceName: sample-service
-#              servicePort: 3000
-#          - path: /api/*
-#            backend:
-#              serviceName: sample-service
-#              servicePort: 3000
