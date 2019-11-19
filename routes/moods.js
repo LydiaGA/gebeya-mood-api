@@ -97,6 +97,10 @@ router.get('/count', [
     check('filter').not().isEmpty().withMessage('Filter is required')
 ], checkAuth, Moods.getMoodCount);
 
+router.get('/graph', [
+    check('filter').not().isEmpty().withMessage('Filter is required')
+], checkAuth, Moods.getGraph);
+
 router.post('/', [
     check('reason').not().isEmpty().withMessage('Reason is required'), 
     check('value').not().isEmpty().withMessage('Value is required'),

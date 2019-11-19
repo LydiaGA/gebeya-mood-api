@@ -2,6 +2,14 @@ const Mood = require("../models/mood");
 const User = require("../models/user");
 const Reason = require("../models/reason");
 
+const searchOptions = require("../lib/search_options");
+
+const graphLabels = {
+  day : [0, 4, 8, 12, 16, 20, 24],
+  month: [1, 6, 12, 18, 25, 30],
+  year: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+};
+
 exports.getChoices = function getChoices(cb){
   Reason.find({type : "Happy"}, function(err, reasons){
     let result = {};
@@ -117,90 +125,87 @@ exports.search = function search(options, cb){
   }
 }
 
-exports.count = function count(filter, cb){
-  Mood.countDocuments(filter, function(err, c){
-    if(err){
-      return cb(err);
-    }
-
-    cb(null, c);
-  });
+exports.count = async function count(filter){
+  var countFilter = { ...filter };
+  delete countFilter.date;
+  delete countFilter.team;
+  const count = await Mood.countDocuments(countFilter);
+  return count;
 }
 
-exports.countByTeam = function countByTeam(team, filter, cb){
-  User.find({team : team}, "_id", function(err, users){
-    if(err){
-      return cb(err);
-    }
+exports.countByTeam = async function countByTeam(team, filter, cb){
+  const users = await User.find({team : team}, "_id");
 
-    filter.user = { $in: users};
+  filter.user = { $in: users};
 
-    exports.count(filter, function(err, c){
-      if(err){
-        return cb(err);
-      }
-      cb(null, c);
-    });
-  });
+  const count = await exports.count(filter);
+  return count;
 }
 
-exports.moodCount = function moodCount(filter, cb){
+exports.moodCount = async function moodCount(filter){
+  var count = 0;
   if(filter.team != null){ 
     var team = filter.team;
     filter.team = null;
 
-    exports.countByTeam(team, filter, function(err, c){
-      if(err){
-        return cb(err);
-      }
-  
-      cb(null, c);
-    });
+    count = await exports.countByTeam(team, filter);
     
   }else{
-    exports.count(filter, function(err, c){
-      if(err){
-        return cb(err);
-      }  
-      cb(null, c);
-    });
+    count = await exports.count(filter);
   }
+
+  return count;
 }
 
-exports.moodCountAllTypes = function moodCountAllTypes(filter, cb){
+exports.moodCountAllTypes = async function moodCountAllTypes(filter){
   filter.value = "Happy";
-  exports.moodCount(filter, function(err, c){
-    let result = {};
-    result.Happy  = c;
+  let result = {};
 
-    filter.value = "Content";
+  result.Happy = await exports.moodCount(filter);
 
-    exports.moodCount(filter, function(err, c){
-      result.Content = c;
+  filter.value = "Content";
+  result.Content = await exports.moodCount(filter);
+  
+  filter.value = "Neutral";
+  result.Neutral = await exports.moodCount(filter);
 
-      filter.value = "Neutral";
+  filter.value = "Sad";
+  result.Sad = await exports.moodCount(filter);
+  
+  filter.value = "Angry";
+  result.Angry = await exports.moodCount(filter);
 
-      exports.moodCount(filter, function(err, c){
-        result.Neutral = c;
+  return result;
 
-        filter.value = "Sad";
-
-        exports.moodCount(filter, function(err, c){
-          result.Sad = c;
-
-          filter.value = "Angry";
-
-          exports.moodCount(filter, function(err, c){
-            result.Angry = c;
-
-            if(err){
-              return cb(err);
-            }  
-            cb(null, result);
-          });
-        });
-      });
-    });
-  });
 }
+
+exports.graph = async function getGraph(filter){
+  var labels = graphLabels[filter.date.timeUnit];
+  var date = new Date(filter.date.date);
+  var result = {};
+  let countFilter = {};
+  for(var i = 0; i < labels.length; i++){
+    countFilter = JSON.parse(JSON.stringify(filter));
+    if(countFilter.date.timeUnit == 'day'){ // add time
+      countFilter.date.date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), labels[i], 0, 0);
+    }else if(countFilter.date.timeUnit == 'month'){
+      countFilter.date.date = new Date(date.getFullYear(), date.getMonth(), labels[i], 0, 0, 0);
+      countFilter.date.timeUnit = 'day';
+    }else{
+      countFilter.date.date = new Date(date.getFullYear(), labels[i], 1, 0, 0, 0);
+      countFilter.date.timeUnit = 'month';
+    }
+
+    console.log(filter.date.timeUnit);
+    var dateInterval = searchOptions.getDateInterval(countFilter.date);
+    console.log(countFilter.date.date);
+    console.log(date);
+    countFilter.date_modified = {"$gte": dateInterval.start, "$lt": dateInterval.end};
+    result[labels[i]] = await exports.moodCountAllTypes(countFilter);
+  }
+
+  return result;
+}
+
+
 

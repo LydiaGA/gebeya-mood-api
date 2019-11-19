@@ -115,7 +115,7 @@ exports.getMoods = function getMoods(req, res, next) {
     workflow.emit('validateQuery');
 };
 
-exports.getMoodCount = function getMoodCount(req, res, next) {
+exports.getMoodCount = async function getMoodCount(req, res, next) {
     var workflow = new events.EventEmitter();
 
     req.query.filter = searchOptions.getFilter(req);
@@ -141,16 +141,54 @@ exports.getMoodCount = function getMoodCount(req, res, next) {
         }
     });
 
-    workflow.on('getCount', function getMoods() {
+    workflow.on('getCount', async function getMoods() {
         filter = req.query.filter;
 
-        MoodDal.moodCountAllTypes(filter, function (err, result) {
-            if (err) {
-                return next(err);
-            }
+        const result = await MoodDal.moodCountAllTypes(filter);
 
-            workflow.emit('respond', result);
-        });
+        workflow.emit('respond', result);
+    });
+
+    workflow.on('respond', function respond(result) {
+        res.status(200);
+        res.json(result);
+    });
+
+    workflow.emit('validateQuery');
+};
+
+exports.getGraph = async function getMoodCount(req, res, next) {
+    var workflow = new events.EventEmitter();
+
+    req.query.filter = searchOptions.getFilter(req);
+
+    workflow.on('validateQuery', function validateSearchQuery() {
+
+        let validationErrors = validationResult(req);
+
+        console.log(req.query.filter.user != req.userData.userId);
+        console.log(req.query.filter.user != null);
+        console.log(req.userData.role == "basic");
+    
+        if(!validationErrors.isEmpty()) {
+          res.status(400);
+          res.json(validationErrors.array());
+        }else if((req.query.filter.user != null && req.query.filter.user != req.userData.userId) && req.userData.role == "basic"){
+            res.status(401);
+            res.json({
+                error: "You don't have enough permission to perform this action"
+               });
+        } else {
+          workflow.emit('getGraph');
+        }
+    });
+
+    workflow.on('getGraph', async function getMoods() {
+        filter = req.query.filter;
+
+        const result = await MoodDal.graph(filter);
+
+        workflow.emit('respond', result);
     });
 
     workflow.on('respond', function respond(result) {
