@@ -1,0 +1,1572 @@
+{
+	"info": {
+		"_postman_id": "70b7fe36-1e1b-49fa-8793-75172d739377",
+		"name": "Gebeya Mood API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"User 6\",\n\t\"email\" : \"user6@example.com\",\n\t\"password\" : \"1234\",\n\t\"sex\" : \"Male\",\n\t\"team\" : \"Talent\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "<h3>Users Signup</h3>\n\n<p>Possible Inputs: </p>\n<ul>\n\t<li>sex : [Male, Female]</li>\n\t<li>team: [Student, Staff, Talent, Contractor,.....]</li>\n</ul>\n"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/users",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"User 6\",\n\t\"email\" : \"user6@example.com\",\n\t\"password\" : \"1234\",\n\t\"sex\" : \"Male\",\n\t\"team\" : \"Talent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"121-eHsAeS+E+SWuT4+qLjhcNDOxlDg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 06 Nov 2019 11:14:40 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"role\": \"basic\",\n    \"_id\": \"5dc2ab2001e23900178223cf\",\n    \"name\": \"User 6\",\n    \"email\": \"user6@example.com\",\n    \"password\": \"$2b$10$nnPr.RIefaCURmcJLb2gcewvu2985iZjdg7KkOB/.jRIrl7aSzgCa\",\n    \"sex\": \"Male\",\n    \"team\": \"Talent\",\n    \"date_created\": \"2019-11-06T11:14:40.615Z\",\n    \"date_modified\": \"2019-11-06T11:14:40.615Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\" : \"user1@example.com\",\n\t\"password\" : \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users/login",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "<h3>Users Login</h3>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/users/login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"user1@example.com\",\n\t\"password\" : \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/users/login",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "538"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"21a-Pt6RHxLQii8AtrvjtVTt56JrrOk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 27 Oct 2019 14:01:46 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Auth Successful\",\n    \"user\": {\n        \"_id\": \"5db5a09f5d4e830017d0a229\",\n        \"name\": \"User 1\",\n        \"email\": \"user1@example.com\",\n        \"password\": \"$2b$10$Y0ZjBatjyOvQ4CcDzN21/uhtSh9VPnVDH3vgtdXF14YjU8Ln3to/O\",\n        \"sex\": \"Female\",\n        \"type\": \"Student\",\n        \"date_created\": \"2019-10-27T13:50:23.543Z\",\n        \"date_modified\": \"2019-10-27T13:50:23.543Z\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyMTg0OTA2LCJleHAiOjE1NzIxODg1MDZ9.6Ehv3b4y0C_Ut10uCala9hhlr3R66vuhHf0qtdnL0JQ\"\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods/choices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyMTg1NjU0LCJleHAiOjE1NzIxODkyNTR9.h4vO2ljpm2DHfLqzazBrh4MBwU6iYWayIbABOE89XH8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods/choices",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods",
+						"choices"
+					]
+				},
+				"description": "<h3>Get Set of Mood Choices</h3>\n\n<p>Returns set of mood choices along with their respective set of reason choices.</p>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/moods/choices",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyMTg1NjU0LCJleHAiOjE1NzIxODkyNTR9.h4vO2ljpm2DHfLqzazBrh4MBwU6iYWayIbABOE89XH8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/moods/choices",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"moods",
+								"choices"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "721"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"2d1-kq30TDthAMsqYDG2dctHBovnoCk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 27 Oct 2019 14:19:33 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Happy\": [\n        {\n            \"_id\": \"5db5a6e3c68e4f001730a1e0\",\n            \"title\": \"Good Weather\",\n            \"type\": \"Happy\",\n            \"date_created\": \"2019-10-27T14:17:07.652Z\",\n            \"date_modified\": \"2019-10-27T14:17:07.652Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"5db5a6f6c68e4f001730a1e1\",\n            \"title\": \"Pay Day\",\n            \"type\": \"Happy\",\n            \"date_created\": \"2019-10-27T14:17:26.213Z\",\n            \"date_modified\": \"2019-10-27T14:17:26.213Z\",\n            \"__v\": 0\n        }\n    ],\n    \"Content\": [\n        {\n            \"_id\": \"5db5a771c68e4f001730a1e3\",\n            \"title\": \"Project Going Well\",\n            \"type\": \"Content\",\n            \"date_created\": \"2019-10-27T14:19:29.514Z\",\n            \"date_modified\": \"2019-10-27T14:19:29.514Z\",\n            \"__v\": 0\n        }\n    ],\n    \"Neutral\": [],\n    \"Sad\": [],\n    \"Angry\": [\n        {\n            \"_id\": \"5db5a733c68e4f001730a1e2\",\n            \"title\": \"Bad Weather\",\n            \"type\": \"Angry\",\n            \"date_created\": \"2019-10-27T14:18:27.706Z\",\n            \"date_modified\": \"2019-10-27T14:18:27.706Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTE3NzAyLCJleHAiOjE1NzI1MjEzMDJ9.l3jKElb1G0VIGfsgtEox1AksxYvVm8PnMaBiGA60Q88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"value\" : \"Content\",\n\t\"reason\" : \"5db5a771c68e4f001730a1e3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods"
+					]
+				},
+				"description": "<h3>Submit a Mood Choice</h3>\n\n<p>Possible Inputs</p>\n\n<ul>\n\t<li>Value : [Happy, Content, Neutral, Sad, Angry]</li>\n</ul>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/moods",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTE3NzAyLCJleHAiOjE1NzI1MjEzMDJ9.l3jKElb1G0VIGfsgtEox1AksxYvVm8PnMaBiGA60Q88",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\" : \"Content\",\n\t\"reason\" : \"5db5a771c68e4f001730a1e3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/moods",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"moods"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "635"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"27b-uh10ElCV5/gHBa1J7BMWY6rG8Qc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 31 Oct 2019 10:31:01 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"5dbab7e48a4e0900171f5bae\",\n    \"value\": \"Content\",\n    \"reason\": {\n        \"_id\": \"5db5a771c68e4f001730a1e3\",\n        \"title\": \"Project Going Well\",\n        \"type\": \"Content\",\n        \"date_created\": \"2019-10-27T14:19:29.514Z\",\n        \"date_modified\": \"2019-10-27T14:19:29.514Z\",\n        \"__v\": 0\n    },\n    \"user\": {\n        \"role\": \"basic\",\n        \"_id\": \"5db5a09f5d4e830017d0a229\",\n        \"name\": \"User 1 Edited\",\n        \"email\": \"user1@example.com\",\n        \"password\": \"$2b$10$Y0ZjBatjyOvQ4CcDzN21/uhtSh9VPnVDH3vgtdXF14YjU8Ln3to/O\",\n        \"sex\": \"Female\",\n        \"type\": \"Student\",\n        \"date_created\": \"2019-10-27T13:50:23.543Z\",\n        \"date_modified\": \"2019-10-27T15:58:58.332Z\",\n        \"__v\": 0\n    },\n    \"date_created\": \"2019-10-31T10:31:00.983Z\",\n    \"date_modified\": \"2019-10-31T10:31:00.983Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods/count",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyMTg1NjU0LCJleHAiOjE1NzIxODkyNTR9.h4vO2ljpm2DHfLqzazBrh4MBwU6iYWayIbABOE89XH8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods/count",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods",
+						"count"
+					]
+				},
+				"description": "<h3>Count the Number of Moods</h3>\n\n<p>Returns the number of moods within the specified filters</p>\n<p>Can only be accessed by the admin</p>\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\"team\" : (type of user : [Student, Staff, ....]),\n\t\t\"user\" : (userId to count by a single user),\n\t\t\"reason\" : (reasonId to count by a specific reason),\n\t\t\"date\" : {\n\t\t\t\"date\" : (date),\n\t\t\t\"timeUnit\" : (period of time around the specified date, [day, month, year])\n\t\t}\n\t}\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/moods/count",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyMTg1NjU0LCJleHAiOjE1NzIxODkyNTR9.h4vO2ljpm2DHfLqzazBrh4MBwU6iYWayIbABOE89XH8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/moods/count?filter={\"user_type\" : \"Student\", \"date\" : {\"date\" : \"October 27, 2019\", \"timeUnit\" : \"month\"}}",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"moods",
+								"count"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"user_type\" : \"Student\", \"date\" : {\"date\" : \"October 27, 2019\", \"timeUnit\" : \"month\"}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "53"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"35-qniDfqqJT+DivoHUAp24WlRFSI4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 27 Oct 2019 14:36:58 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Happy\": 1,\n    \"Content\": 0,\n    \"Neutral\": 0,\n    \"Sad\": 0,\n    \"Angry\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods/search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTczMDM5NDIwLCJleHAiOjE1NzMxMjU4MjB9.83Fml8sfoiboLHlRWXrmPbfidqz2zI3egQqmakT72Bo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods/search",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods",
+						"search"
+					]
+				},
+				"description": "<h3>Search Moods</h3>\n\n<p>Returns a list of moods within the specified filters</p>\n<p>Can only be accessed by the admin</p>\n\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\"team\" : (type of user : [Student, Staff, ....]),\n\t\t\"user\" : (userId to count by a single user),\n\t\t\"reason\" : (reasonId to count by a specific reason),\n\t\t\"date\" : {\n\t\t\t\"date\" : (date),\n\t\t\t\"timeUnit\" : (period of time around the specified date, [day, month, year])\n\t\t}\n\t}\n\t\n\tpage = (current page number)\n\tlimit = (number of items in current page)\n\tsort = (filed to sort items by)\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/moods/search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNzE1NDM4LCJleHAiOjE1NzI3MTkwMzh9.j3Hf5omlVKdye82LZht4cha9OYGZ2u-t7fQYodxRh4k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/moods/search?filter={\"team\" : \"Student\", \"date\" : {\"date\" : \"October 27, 2019\", \"timeUnit\" : \"year\"}}&page=1&limit=10&sort=date_modified",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"moods",
+								"search"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"team\" : \"Student\", \"date\" : {\"date\" : \"October 27, 2019\", \"timeUnit\" : \"year\"}}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "date_modified"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "425"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"1a9-evPuT5jrKewPJcUUuEhJwShmXB8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2019 17:26:58 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"user_id\": \"5db5a09f5d4e830017d0a229\",\n        \"user_name\": \"User 1 Edited\",\n        \"mood\": \"Happy\",\n        \"team\": \"Student\",\n        \"reason\": \"Good Weather\",\n        \"date_created\": \"2019-10-27T14:27:23.726Z\",\n        \"date_modified\": \"2019-10-27T14:27:23.726Z\"\n    },\n    {\n        \"user_id\": \"5db5a09f5d4e830017d0a229\",\n        \"user_name\": \"User 1 Edited\",\n        \"mood\": \"Content\",\n        \"team\": \"Student\",\n        \"reason\": \"Project Going Well\",\n        \"date_created\": \"2019-10-31T10:31:00.983Z\",\n        \"date_modified\": \"2019-10-31T10:31:00.983Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users/profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTE3NzAyLCJleHAiOjE1NzI1MjEzMDJ9.l3jKElb1G0VIGfsgtEox1AksxYvVm8PnMaBiGA60Q88",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				},
+				"description": "<h3>Get Profile of current logged in user</h3>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/users/profile/5db5a09f5d4e830017d0a229",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyMTg1NjU0LCJleHAiOjE1NzIxODkyNTR9.h4vO2ljpm2DHfLqzazBrh4MBwU6iYWayIbABOE89XH8",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/users/profile/5db5a09f5d4e830017d0a229",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile",
+								"5db5a09f5d4e830017d0a229"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "277"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"115-tcTA1a8VixM5FXC1hylsuHyilAM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 27 Oct 2019 15:57:22 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"5db5a09f5d4e830017d0a229\",\n    \"name\": \"User 1\",\n    \"email\": \"user1@example.com\",\n    \"password\": \"$2b$10$Y0ZjBatjyOvQ4CcDzN21/uhtSh9VPnVDH3vgtdXF14YjU8Ln3to/O\",\n    \"sex\": \"Female\",\n    \"type\": \"Student\",\n    \"date_created\": \"2019-10-27T13:50:23.543Z\",\n    \"date_modified\": \"2019-10-27T15:56:29.560Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users/profile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTE3NzAyLCJleHAiOjE1NzI1MjEzMDJ9.l3jKElb1G0VIGfsgtEox1AksxYvVm8PnMaBiGA60Q88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"User 1 Edited\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				},
+				"description": "<h3>Update Profile of current logged in user</h3>"
+			},
+			"response": []
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users/types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users/types",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"types"
+					]
+				},
+				"description": "<h3>Get List of User Types</h3>"
+			},
+			"response": []
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users/search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTczMDI4ODc5LCJleHAiOjE1NzMxMTUyNzl9.G33PC8aHDGnPFF_xzdbtDtHvyaJV6gctdwcpmtl1J74",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users/search?filter={\"type\" : \"Student\"}",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "{\"type\" : \"Student\"}"
+						}
+					]
+				},
+				"description": "<h3>Get Users by any Filter</h3>\n<p>Can only be accessed by the admin</p>\n\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\"team\" : (type of user : [Student, Staff, ....]\n\t}\n\t\n\tpage = (current page number)\n\tlimit = (number of items in current page)\n\tsort = (filed to sort items by)\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": []
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/users/:id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNTI3MDcyLCJleHAiOjE1NzI1MzA2NzJ9.-DkW2AyAvNmcrukpVCMQUN-rIj1TNlqHy3aH--zEex4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/users/5db5a09f5d4e830017d0a229",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"5db5a09f5d4e830017d0a229"
+					]
+				},
+				"description": "<h3>Get a single user</h3>\n<p>Can only be accessed by the admin</p>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNTI3MDcyLCJleHAiOjE1NzI1MzA2NzJ9.-DkW2AyAvNmcrukpVCMQUN-rIj1TNlqHy3aH--zEex4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/users/:id",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5db5a09f5d4e830017d0a229"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "299"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"12b-9NarwVuvYDnjSrNw+DihWRwZ1JE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 31 Oct 2019 13:05:26 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"role\": \"basic\",\n    \"_id\": \"5db5a09f5d4e830017d0a229\",\n    \"name\": \"User 1 Edited\",\n    \"email\": \"user1@example.com\",\n    \"password\": \"$2b$10$Y0ZjBatjyOvQ4CcDzN21/uhtSh9VPnVDH3vgtdXF14YjU8Ln3to/O\",\n    \"sex\": \"Female\",\n    \"type\": \"Student\",\n    \"date_created\": \"2019-10-27T13:50:23.543Z\",\n    \"date_modified\": \"2019-10-31T10:34:53.318Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods/my-logs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTM1MDM0LCJleHAiOjE1NzI1Mzg2MzR9.l1W3-EioUdla6r5ZQKVm2Tegag_YNAD7iHcKoqYoTgQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods/my-logs",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods",
+						"my-logs"
+					]
+				},
+				"description": "<h3>Get moods of the current logged in user</h3>\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\"reason\" : (reasonId to count by a specific reason),\n\t\t\"date\" : {\n\t\t\t\"date\" : (date),\n\t\t\t\"timeUnit\" : (period of time around the specified date, [day, month, year])\n\t\t}\n\t}\n\t\n\tpage = (current page number)\n\tlimit = (number of items in current page)\n\tsort = (field to sort items by)\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/moods/my-logs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTQxODc2LCJleHAiOjE1NzI1NDU0NzZ9.FVvbb4BBULD-k3sMoXum3fyU-1ztYoB8D8_5-_9RAko",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/moods/my-logs?filter={}&page=1&limit=10&sort=date_created",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"moods",
+								"my-logs"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "date_created"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1247"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"4df-vO0me2WNTS48n+CNEafnvgmkXGk\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 31 Oct 2019 17:11:43 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"5db5a94bc68e4f001730a1e4\",\n        \"user\": {\n            \"role\": \"basic\",\n            \"_id\": \"5db5a09f5d4e830017d0a229\",\n            \"name\": \"User 1 Edited\",\n            \"email\": \"user1@example.com\",\n            \"password\": \"$2b$10$Y0ZjBatjyOvQ4CcDzN21/uhtSh9VPnVDH3vgtdXF14YjU8Ln3to/O\",\n            \"sex\": \"Female\",\n            \"type\": \"Student\",\n            \"date_created\": \"2019-10-27T13:50:23.543Z\",\n            \"date_modified\": \"2019-10-31T10:34:53.318Z\",\n            \"__v\": 0\n        },\n        \"reason\": {\n            \"_id\": \"5db5a6e3c68e4f001730a1e0\",\n            \"title\": \"Good Weather\",\n            \"type\": \"Happy\",\n            \"date_created\": \"2019-10-27T14:17:07.652Z\",\n            \"date_modified\": \"2019-10-27T14:17:07.652Z\",\n            \"__v\": 0\n        },\n        \"value\": \"Happy\",\n        \"date_created\": \"2019-10-27T14:27:23.726Z\",\n        \"date_modified\": \"2019-10-27T14:27:23.726Z\"\n    },\n    {\n        \"_id\": \"5dbab7e48a4e0900171f5bae\",\n        \"value\": \"Content\",\n        \"reason\": {\n            \"_id\": \"5db5a771c68e4f001730a1e3\",\n            \"title\": \"Project Going Well\",\n            \"type\": \"Content\",\n            \"date_created\": \"2019-10-27T14:19:29.514Z\",\n            \"date_modified\": \"2019-10-27T14:19:29.514Z\",\n            \"__v\": 0\n        },\n        \"user\": {\n            \"role\": \"basic\",\n            \"_id\": \"5db5a09f5d4e830017d0a229\",\n            \"name\": \"User 1 Edited\",\n            \"email\": \"user1@example.com\",\n            \"password\": \"$2b$10$Y0ZjBatjyOvQ4CcDzN21/uhtSh9VPnVDH3vgtdXF14YjU8Ln3to/O\",\n            \"sex\": \"Female\",\n            \"type\": \"Student\",\n            \"date_created\": \"2019-10-27T13:50:23.543Z\",\n            \"date_modified\": \"2019-10-31T10:34:53.318Z\",\n            \"__v\": 0\n        },\n        \"date_created\": \"2019-10-31T10:31:00.983Z\",\n        \"date_modified\": \"2019-10-31T10:31:00.983Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods/my-mood-count",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5IiwiaWF0IjoxNTcyNTQxODc2LCJleHAiOjE1NzI1NDU0NzZ9.FVvbb4BBULD-k3sMoXum3fyU-1ztYoB8D8_5-_9RAko",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods/my-mood-count",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods",
+						"my-mood-count"
+					]
+				},
+				"description": "<h3>Mood count of current logged in user</h3>\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\"reason\" : (reasonId to count by a specific reason),\n\t\t\"date\" : {\n\t\t\t\"date\" : (date),\n\t\t\t\"timeUnit\" : (period of time around the specified date, [day, month, year])\n\t\t}\n\t}\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": []
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/team-moods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNjMxOTA1LCJleHAiOjE1NzI2MzU1MDV9.dy0CzKIs3EG0eD9Wie5HYHhDfMZdKDysL56hwvzpC-c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Student\",\n\t\"total\" : \"10\",\n\t\"mood\" : \"Happy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/team-moods",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"team-moods"
+					]
+				},
+				"description": "<h3>Post a team mood</h3>\n"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/team-moods",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNjMxOTA1LCJleHAiOjE1NzI2MzU1MDV9.dy0CzKIs3EG0eD9Wie5HYHhDfMZdKDysL56hwvzpC-c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Student\",\n\t\"total\" : \"10\",\n\t\"mood\" : \"Happy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/team-moods",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"team-moods"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "172"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"ac-G+QlclDajjvJmfFwH6s5mVMu7xs\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2019 18:12:11 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"5dbc757a7060f900176142ac\",\n    \"name\": \"Student\",\n    \"total\": \"10\",\n    \"mood\": \"Happy\",\n    \"date_created\": \"2019-11-01T18:12:10.947Z\",\n    \"date_modified\": \"2019-11-01T18:12:10.947Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/team-moods/search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNjMxOTA1LCJleHAiOjE1NzI2MzU1MDV9.dy0CzKIs3EG0eD9Wie5HYHhDfMZdKDysL56hwvzpC-c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/team-moods/search",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"team-moods",
+						"search"
+					]
+				},
+				"description": "<h3>Get a list of team moods</h3>\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\t\"name\" : (name of the required team)\n\t}\n\t\n\tpage = (current page number)\n\tlimit = (number of items in current page)\n\tsort = (field to sort items by)\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/team-moods/search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNjMxOTA1LCJleHAiOjE1NzI2MzU1MDV9.dy0CzKIs3EG0eD9Wie5HYHhDfMZdKDysL56hwvzpC-c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/team-moods/search?filter={}&page=1&limit=10&sort=date_modified",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"team-moods",
+								"search"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "date_modified"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "166"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"a6-0PRCkpp8e3qOFBTk9QqINds3ogw\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2019 18:21:02 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"5dbc757a7060f900176142ac\",\n        \"name\": \"Student\",\n        \"total\": \"10\",\n        \"mood\": \"Happy\",\n        \"date_created\": \"2019-11-01T18:12:10.947Z\",\n        \"date_modified\": \"2019-11-01T18:12:10.947Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/team-moods/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNjMxOTA1LCJleHAiOjE1NzI2MzU1MDV9.dy0CzKIs3EG0eD9Wie5HYHhDfMZdKDysL56hwvzpC-c",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"total\" : \"20\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/team-moods/5dbc757a7060f900176142ac",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"team-moods",
+						"5dbc757a7060f900176142ac"
+					]
+				},
+				"description": "<h3>Update team mood</h3>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/team-moods/:id",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdlYmV5YW1vb2QuY29tIiwidXNlcklkIjoiNWRiYWE0YTc1M2I2MTIwMDE3MDVmNDQ4IiwiaWF0IjoxNTcyNjMxOTA1LCJleHAiOjE1NzI2MzU1MDV9.dy0CzKIs3EG0eD9Wie5HYHhDfMZdKDysL56hwvzpC-c",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"total\" : \"20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/team-moods/5dbc757a7060f900176142ac",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"team-moods",
+								"5dbc757a7060f900176142ac"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"ac-G+QlclDajjvJmfFwH6s5mVMu7xs\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Nov 2019 18:25:31 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "https://stark-peak-15799.herokuapp.com/moods/graph",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5Iiwicm9sZSI6ImJhc2ljIiwiaWF0IjoxNTc0MzU1NjUyLCJleHAiOjE1NzQ0NDIwNTJ9.TxSI9zcB4j3CjMqZMx1o89TpQhYaHBU9lPs8kJNm74g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://stark-peak-15799.herokuapp.com/moods/graph",
+					"protocol": "https",
+					"host": [
+						"stark-peak-15799",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"moods",
+						"graph"
+					]
+				},
+				"description": "<h3>Get Graph</h3>\n<p>Request Pramaters: </p>\n<pre>\n\tfilter  = {\n\t\t\"team\" : (type of user : [Student, Staff, ....]),\n\t\t\"user\" : (userId to count by a single user),\n\t\t\"reason\" : (reasonId to count by a specific reason),\n\t\t\"date\" : {\n\t\t\t\"date\" : (date),\n\t\t\t\"timeUnit\" : (period of time around the specified date, [day, month, year])\n\t\t}\n\t}\n</pre>\n\n<p>All filter fields are optional<p/>"
+			},
+			"response": [
+				{
+					"name": "https://stark-peak-15799.herokuapp.com/moods/graph",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIxQGV4YW1wbGUuY29tIiwidXNlcklkIjoiNWRiNWEwOWY1ZDRlODMwMDE3ZDBhMjI5Iiwicm9sZSI6ImJhc2ljIiwiaWF0IjoxNTc0MzU1NjUyLCJleHAiOjE1NzQ0NDIwNTJ9.TxSI9zcB4j3CjMqZMx1o89TpQhYaHBU9lPs8kJNm74g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://stark-peak-15799.herokuapp.com/moods/graph?filter={\"team\" : \"Student\", \"date\" : {\"date\" : \"October 27, 2019\", \"timeUnit\" : \"year\"} }&page=1&limit=100",
+							"protocol": "https",
+							"host": [
+								"stark-peak-15799",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"moods",
+								"graph"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"team\" : \"Student\", \"date\" : {\"date\" : \"October 27, 2019\", \"timeUnit\" : \"year\"} }"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "699"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"2bb-bowR9cwIJ+rVfQEydS8z7M0Fng4\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 21 Nov 2019 17:11:55 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"0\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"1\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"2\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"3\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"4\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"5\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"6\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"7\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"8\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"9\": {\n        \"Happy\": 1,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"10\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    },\n    \"11\": {\n        \"Happy\": 0,\n        \"Content\": 0,\n        \"Neutral\": 0,\n        \"Sad\": 0,\n        \"Angry\": 0\n    }\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
