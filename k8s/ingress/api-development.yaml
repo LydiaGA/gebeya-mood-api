@@ -14,11 +14,3 @@ spec:
             backend:
               serviceName: sample-service
               servicePort: 3000
-#          - path: /api
-#            backend:
-#              serviceName: sample-service
-#              servicePort: 3000
-#          - path: /api/*
-#            backend:
-#              serviceName: sample-service
-#              servicePort: 3000

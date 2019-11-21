@@ -13,16 +13,12 @@ module.exports = function iniRouter(app) {
 	app.use('/moods', moodsRouter);
 	app.use('/reasons', reasonsRouter);
 	app.use('/team-moods', teamMoodsRouter);
-	app.use('/health', function(req, res, next){
-		if(mongoose.connection.readyState === 1 || mongoose.connection.readyState === 2){
-			res.status(200);
-		}else{
-			res.status(500);
-		}		
+	app.use('/health', function (req, res, next) {
+		res.status(200);
 		res.json({
-			App_Status : "UP",
-			MongoDB_Connection_Status : mongoStatusCodes[mongoose.connection.readyState],
-			Link_to_API_Documentation : "https://documenter.getpostman.com/view/6477566/SVtZvRrJ?version=latest"			
+			App_Status: "UP",
+			MongoDB_Connection_Status: mongoStatusCodes[mongoose.connection.readyState],
+			Link_to_API_Documentation: "https://documenter.getpostman.com/view/6477566/SVtZvRrJ?version=latest"
 		});
 	});
 };
