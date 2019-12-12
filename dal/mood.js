@@ -186,8 +186,9 @@ exports.graph = async function getGraph(filter){
   let countFilter = {};
   for(var i = 0; i < labels.length; i++){
     countFilter = JSON.parse(JSON.stringify(filter));
-    if(countFilter.date.timeUnit == 'day'){ // add time
+    if(countFilter.date.timeUnit == 'day'){
       countFilter.date.date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), labels[i], 0, 0);
+      countFilter.date.timeUnit = 'time';
     }else if(countFilter.date.timeUnit == 'month'){
       countFilter.date.date = new Date(date.getFullYear(), date.getMonth(), labels[i], 0, 0, 0);
       countFilter.date.timeUnit = 'day';
