@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const config = require('./config');
+require('dotenv').config()
 const router = require('./routes');
 
-mongoose.connect(config.MONGODB_URL,
+mongoose.connect(process.env.MONGODB_URI,
 { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', function mongoListener(err) {
@@ -15,7 +15,7 @@ mongoose.connection.on('connected', function mongoListener(err) {
 mongoose.connection.on('error', function mongoErrorListener(err) {
   console.log('Connecting to MongoDB failed!');
 
-  mongoose.connect(config.MONGODB_URL,
+  mongoose.connect(process.env.MONGODB_URI,
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 // mongoose.connect(config.MONGODB_URL, 
