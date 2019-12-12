@@ -101,7 +101,7 @@ exports.getMoods = function getMoods(req, res, next) {
                 user_name: mood.user.name,
                 mood: mood.value,
                 team: mood.user.team,
-                reason: mood.reason.title,
+                reason: mood.reason == null? mood.reason : mood.reason.title,
                 date_created: mood.date_created,
                 date_modified: mood.date_modified, 
             };
@@ -109,7 +109,7 @@ exports.getMoods = function getMoods(req, res, next) {
         });
         console.log(result);
         res.status(200);
-        res.json(result);
+        res.json(moods);
     });
 
     workflow.emit('validateQuery');
@@ -249,5 +249,18 @@ exports.myMoodCount = function myMoodCount(req, res, next){
 
     workflow.emit('validateQuery');
 }
+
+exports.deleteMood = function(req, res, next){
+    MoodDal.deleteMood(req.params.id, function(err, mood){
+      if (err) {
+        return res.status(404).json({
+          message: 'Mood Not Found'
+        });
+      }
+  
+      res.status(204);
+      res.json(mood);
+    });
+  }
 
 

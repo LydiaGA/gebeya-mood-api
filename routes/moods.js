@@ -107,4 +107,6 @@ router.post('/', [
     check('value').isIn(["Happy", "Content", "Neutral", "Sad", "Angry"]).withMessage('Incorrect Input')
 ], checkAuth, Moods.saveMood);
 
+router.delete('/:id', checkAuth, Moods.deleteMood);
+
 module.exports = router;

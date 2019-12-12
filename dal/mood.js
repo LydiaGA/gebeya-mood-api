@@ -208,4 +208,14 @@ exports.graph = async function getGraph(filter){
 }
 
 
+exports.deleteMood = function deleteMood(query, cb){
+
+  Mood.findOneAndDelete(query).exec(function(err, mood){
+    if (err) {
+      return cb(err);
+    }
+    cb(null, mood || {});
+  });
+}
+
 
