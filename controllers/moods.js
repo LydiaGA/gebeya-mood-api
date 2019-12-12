@@ -97,7 +97,7 @@ exports.getMoods = function getMoods(req, res, next) {
     workflow.on('respond', function respond(moods) {
         // var result = moods.map((mood) => {
         //     var newMood = {
-            
+
         //         user_id : mood.user == null ? mood.user : mood.user.id,
         //         user_name:  mood.user == null ? mood.user : mood.user.name,
         //         mood: mood.value,
@@ -252,7 +252,7 @@ exports.myMoodCount = function myMoodCount(req, res, next){
 }
 
 exports.deleteMood = function(req, res, next){
-    MoodDal.deleteMood(req.params.id, function(err, mood){
+    MoodDal.deleteMood({_id : req.params.id}, function(err, mood){
       if (err) {
         return res.status(404).json({
           message: 'Mood Not Found'
