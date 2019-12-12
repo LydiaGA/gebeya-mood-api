@@ -97,11 +97,11 @@ exports.getMoods = function getMoods(req, res, next) {
     workflow.on('respond', function respond(moods) {
         var result = moods.map((mood) => {
             var newMood = {
-                user_id : mood.user == null? mood.user : mood.user.id,
-                user_name:  mood.user == null? mood.user : mood.user.name,
+                user_id : mood.user == null ? mood.user : mood.user.id,
+                user_name:  mood.user == null ? mood.user : mood.user.name,
                 mood: mood.value,
-                team:  mood.user == null? mood.user : mood.user.team,
-                reason: mood.reason == null? mood.reason : mood.reason.title,
+                team:  mood.user == null ? mood.user : mood.user.team,
+                reason: mood.reason == null ? mood.reason : mood.reason.title,
                 date_created: mood.date_created,
                 date_modified: mood.date_modified, 
             };
